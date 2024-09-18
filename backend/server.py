@@ -8,38 +8,14 @@ from reportlab.lib.pagesizes import letter
 from reportlab.pdfgen import canvas
 from io import BytesIO
 from flask_cors import CORS
-import requests
-import zipfile
-import io
 
 # Initialize the Flask application
 app = Flask(__name__)
 CORS(app)
 
-# Model URL (updated to a zip file containing the entire model)
-MODEL_URL = 'https://github.com/harrycallahan117/mri-tumor-analysis/releases/download/v1.0.0/new_model_saved.zip'
-
-def download_and_load_model():
-    # Create temporary directory to store the model
-    tmp_dir = '/tmp/new_model_saved'
-    
-    if not os.path.exists(tmp_dir):
-        os.makedirs(tmp_dir)
-    
-        # Download the model zip file into memory
-        response = requests.get(MODEL_URL)
-        if response.status_code == 200:
-            model_zip = zipfile.ZipFile(io.BytesIO(response.content))
-            model_zip.extractall(tmp_dir)  # Extract model files to /tmp
-        else:
-            raise Exception("Failed to download the model")
-
-    # Load the model from the extracted files
-    model = tf.saved_model.load(tmp_dir)
-    return model
-
-# Load the model once at startup
-model = download_and_load_model()
+# Load the trained model
+model_path = 'E:/private_projects/mri-tumor-analysis/backend/new_model_saved'
+model = tf.saved_model.load(model_path)
 
 # Define the upload folder and allowed extensions
 UPLOAD_FOLDER = 'uploads'
