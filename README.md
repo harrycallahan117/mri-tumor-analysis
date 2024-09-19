@@ -1,5 +1,32 @@
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
+# MRI Tumor Classification API
+
+This project is a full-stack web application that allows users to upload MRI scans and receive a PDF report classifying the scan into one of four categories: Glioma Tumor, Meningioma Tumor, Normal, or Pituitary Tumor.
+
+The backend uses a pre-trained TensorFlow model served through a Flask API, while the frontend allows users to upload images and receive classification reports.
+
+## Model Performance
+
+- **Training Accuracy**: 98.75%
+- **Testing Accuracy**: 90%
+- We are continuously working on improving the model to achieve better generalization and real-world performance.
+
+## Features
+
+- **Upload MRI scans**: Users can upload images in `.png`, `.jpg`, or `.jpeg` formats.
+- **Automated classification**: The API classifies the scan into one of the four categories.
+- **PDF report generation**: The results are provided in a downloadable PDF format.
+
+## Installation
+
+### Clone the repository
+
+```bash
+git clone https://github.com/yourusername/yourprojectname.git
+cd yourprojectname
+
+
 ## Getting Started
 
 First, run the development server:
@@ -29,8 +56,3 @@ To learn more about Next.js, take a look at the following resources:
 
 You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
